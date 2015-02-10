@@ -1,3 +1,6 @@
+# Changes in this file may be overwritten
+# Please use .gitconfig-local for system specific settings
+
 [alias]
     div = divergence
     l = !pretty_git_log

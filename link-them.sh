@@ -25,3 +25,7 @@ do
     ln -s $CWD/bin/$i $HOME/bin/$i
 done
 
+if [ ! -f "$HOME/.gitconfig-local" ]
+then
+    echo "Put your machine/user specific git config here" > "$HOME/.gitconfig-local"
+fi
