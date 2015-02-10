@@ -33,4 +33,5 @@
     default = simple
 [core]
     editor = vim
-
+[include]
+    path = .gitconfig-local
