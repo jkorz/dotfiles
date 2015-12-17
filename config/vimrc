@@ -2,6 +2,7 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set nocompatible
 filetype off
+runtime macros/matchit.vim
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'gmarik/vundle'
@@ -9,7 +10,6 @@ Plugin 'gmarik/vundle'
 " my bundles
 Plugin 'bling/vim-airline'
 Plugin 'airblade/vim-gitgutter'
-Plugin 'edkolev/tmuxline.vim'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'ervandew/supertab'
 Plugin 'kana/vim-scratch'
@@ -25,6 +25,8 @@ Plugin 'tpope/vim-repeat'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'jeetsukumaran/vim-buffergator'
 Plugin 'kchmck/vim-coffee-script'
+Plugin 'ecomba/vim-ruby-refactoring'
+Plugin 'scrocreateoloose/syntastic'
 " colorschemes
 Plugin 'chriskempson/base16-vim'
 Plugin 'chriskempson/vim-tomorrow-theme'
@@ -56,6 +58,7 @@ set hlsearch
 set ignorecase smartcase
 " highlight current line
 set cursorline
+set colorcolumn=80
 set cmdheight=2
 set switchbuf=useopen
 set numberwidth=1
@@ -87,6 +90,18 @@ filetype plugin indent on
 set wildmode=full
 " make tab completion for files/buffers act like bash
 set wildmenu
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Syntastic CONFIGURATION
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " AIRLINE CONFIGURATION
@@ -159,10 +174,10 @@ nnoremap <leader><leader> <c-^>
 inoremap <tab> <c-r>=InsertTabWrapper()<cr>
 inoremap <s-tab> <c-n>
 " Arrow keys: UNACCEPTABLE
-" map <Left> :echo "NOPE! Use h"<cr>
-" map <Right> :echo "NOPE! Use l"<cr>
-" map <Up> :echo "NOPE! Use k"<cr>
-" map <Down> :echo "NOPE! Use j"<cr>
+map <Left> :echo "NOPE! Use h"<cr>
+map <Right> :echo "NOPE! Use l"<cr>
+map <Up> :echo "NOPE! Use k"<cr>
+map <Down> :echo "NOPE! Use j"<cr>
 " open files in directory of current file
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
 map <leader>e :edit %%
@@ -213,14 +228,14 @@ set showmode
 " MULTIPURPOSE TAB KEY
 " Indent if we're at the beginning of a line. Else, do completion.
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"function! InsertTabWrapper()
-    "let col = col('.') - 1
-    "if !col || getline('.')[col - 1] !~ '\k'
-        "return "\<tab>"
-    "else
-        "return "\<c-p>"
-    "endif
-"endfunction
+function! InsertTabWrapper()
+    let col = col('.') - 1
+    if !col || getline('.')[col - 1] !~ '\k'
+        return "\<tab>"
+    else
+        return "\<c-p>"
+    endif
+endfunction
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " BIG RED TRAILING WHITESPACE
@@ -304,7 +319,7 @@ function! RunTests(filename)
 "        exec ":!zeus rspec --color --format=nested --order default " . a:filename
 "    else
 "        exec ":!bundle exec rspec --color --format=nested " . a:filename
-        exec ":!bundle exec rspec --color " . a:filename
+        exec ":! bundle exec rspec --color " . a:filename
 "    end
 endfunction
 
