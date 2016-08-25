@@ -36,7 +36,18 @@
     default = simple
 [core]
     editor = vim
+    pager = diff-so-fancy | less --tabs=4 -RFX
 [include]
     path = .gitconfig-local
 [rerere]
 	enabled = true
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
+[merge]
+	tool = vimdiff
+	conflictstyle = diff3
+[mergetool]
+	prompt = false
