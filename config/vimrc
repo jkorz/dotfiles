@@ -2,7 +2,6 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set nocompatible
 filetype off
-runtime macros/matchit.vim
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'gmarik/vundle'
@@ -10,6 +9,7 @@ Plugin 'gmarik/vundle'
 " my bundles
 Plugin 'bling/vim-airline'
 Plugin 'airblade/vim-gitgutter'
+" Plugin 'edkolev/tmuxline.vim'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'ervandew/supertab'
 Plugin 'kana/vim-scratch'
@@ -19,19 +19,18 @@ Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-dispatch'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-rails'
+Plugin 'jgdavey/vim-blockle'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-repeat'
 Plugin 'vim-ruby/vim-ruby'
+Plugin 'vim-scripts/taglist.vim'
 Plugin 'jeetsukumaran/vim-buffergator'
 Plugin 'kchmck/vim-coffee-script'
+Plugin 'vim-syntastic/syntastic'
+Plugin 'tmhedberg/matchit'
 Plugin 'ecomba/vim-ruby-refactoring'
-Plugin 'scrocreateoloose/syntastic'
-Plugin 'vim-scripts/taglist.vim'
-Plugin 'vim-scripts/cscope.vim'
-Plugin 'valloric/youcompleteme'
 Plugin 'tpope/vim-eunuch'
-Plugin 'jiangmiao/auto-pairs'
 " colorschemes
 Plugin 'chriskempson/base16-vim'
 Plugin 'chriskempson/vim-tomorrow-theme'
@@ -148,7 +147,7 @@ augroup END
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " COLOR
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set background=dark
+set background=light
 colorscheme codeschool
 map <F5> :let &background = ( &background == "dark"? "light" : "dark" )<CR>
 
@@ -163,10 +162,10 @@ map <F5> :let &background = ( &background == "dark"? "light" : "dark" )<CR>
 let mapleader=","
 map <leader>y "*y
 " Move around splits with <c-hjkl>
-nnoremap <C-j> <C-w>j
-nnoremap <c-k> <c-w>k
-nnoremap <c-h> <c-w>h
-nnoremap <c-l> <c-w>l
+" nnoremap <C-j> <C-w>j
+" nnoremap <c-k> <c-w>k
+" nnoremap <c-h> <c-w>h
+" nnoremap <c-l> <c-w>l
 " Insert a hash rocket with <c-l>
 imap <c-l> <space>=><space>
 " insert current datetime
@@ -264,7 +263,7 @@ function! AlternateForCurrentFile()
   let new_file = current_file
   let in_spec = match(current_file, '^spec/') != -1
   let going_to_spec = !in_spec
-  let in_app = match(current_file, '\<controllers\>') != -1 || match(current_file, '\<models\>') != -1 || match(current_file, '\<views\>') != -1 || match(current_file, '\<decorators\>') != -1 || match(current_file, '\<services\>') != -1 || match(current_file, '\<helpers\>') != -1 || match(current_file, '\<serializers\>') != -1
+  let in_app = match(current_file, '\<controllers\>') != -1 || match(current_file, '\<models\>') != -1 || match(current_file, '\<views\>') != -1 || match(current_file, '\<decorators\>') != -1 || match(current_file, '\<services\>') != -1 || match(current_file, '\<helpers\>') != -1
   if going_to_spec
     if in_app
       let new_file = substitute(new_file, '^app/', '', '')
@@ -348,13 +347,23 @@ endfunction
 "  :normal dd
 "endfunction
 
-let g:ackprg="ack -H --nocolor --nogroup --column"
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+else
+  let g:ackprg="ack -H --nocolor --nogroup --column"
+endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CTRLP STUFFS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:ctrlp_max_height = 30
 let g:ctrlp_mruf_relative = 1
 let g:ctrlp_working_path_mode = 'w'
+let g:ctrlp_user_command = {
+  \ 'types': {
+    \ 1: ['.git', 'git -C %s ls-files --cached --exclude-standard --others'],
+    \ },
+  \ 'fallback': 'find %s -type f'
+  \ }
 command! CtrlPLine call ctrlp#init(ctrlp#line#id())
 
 "--------------------
@@ -363,25 +372,3 @@ command! CtrlPLine call ctrlp#init(ctrlp#line#id())
 "--------------------
  map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 
-" make use of Xterm bracketed paste mode
-" http://www.xfree86.org/current/ctlseqs.html#Bracketed%20Paste%20Mode
-" http://stackoverflow.com/questions/5585129
-" if s:screen
-"   function! s:BeginXTermPaste(ret)
-"     set paste
-"     return a:ret
-"   endfunction
-
-"   " enable bracketed paste mode on entering Vim
-"   let &t_ti .= "\e[?2004h"
-
-"   " disable bracketed paste mode on leaving Vim
-"   let &t_te = "\e[?2004l" . &t_te
-
-"   set pastetoggle=<Esc>[201~
-"   inoremap <expr> <Esc>[200~ <SID>BeginXTermPaste("")
-"   nnoremap <expr> <Esc>[200~ <SID>BeginXTermPaste("i")
-"   vnoremap <expr> <Esc>[200~ <SID>BeginXTermPaste("c")
-"   cnoremap <Esc>[200~ <nop>
-"   cnoremap <Esc>[201~ <nop>
-" endif

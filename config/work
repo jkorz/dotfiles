@@ -3,13 +3,15 @@ new-session -s work -n '' -d
 send-keys -t work:0 'cd $PROJECT_DIR' C-m
 send-keys -t work:0 'vim' C-m
 new-window -t work
-send-keys -t work:1 'mailcatcher --http-ip=0.0.0.0' C-m
-send-keys -t work:1 'cd $PROJECT_DIR' c-m
+send-keys -t work:1 'cd $PROJECT_DIR && clear' c-m
 new-window -t work
-send-keys -t work:2 'cd $PROJECT_DIR' C-m
+send-keys -t work:2 'cd $PROJECT_DIR && clear' C-m
 send-keys -t work:2 'guard' C-m
 new-window -t work
-send-keys -t work:3 'cd $PROJECT_DIR' C-m
+send-keys -t work:3 'cd $PROJECT_DIR && clear' C-m
 send-keys -t work:3 'rails c' C-m
+new-window -t work
+send-keys -t work:4 'cd $PROJECT_DIR && clear' C-m
+send-keys -t work:4 'rails s' C-m
 select-window -t work:0
 
