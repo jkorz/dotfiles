@@ -25,7 +25,7 @@ Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-repeat'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'vim-scripts/taglist.vim'
-Plugin 'jeetsukumaran/vim-buffergator'
+" Plugin 'jeetsukumaran/vim-buffergator'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'tmhedberg/matchit'
@@ -62,7 +62,7 @@ set hlsearch
 set ignorecase smartcase
 " highlight current line
 set cursorline
-set colorcolumn=80
+set colorcolumn=81
 set cmdheight=2
 set switchbuf=useopen
 set numberwidth=1
@@ -178,10 +178,10 @@ nnoremap <leader><leader> <c-^>
 inoremap <tab> <c-r>=InsertTabWrapper()<cr>
 inoremap <s-tab> <c-n>
 " Arrow keys: UNACCEPTABLE
-map <Left> :echo "NOPE! Use h"<cr>
-map <Right> :echo "NOPE! Use l"<cr>
-map <Up> :echo "NOPE! Use k"<cr>
-map <Down> :echo "NOPE! Use j"<cr>
+" map <Left> :echo "NOPE! Use h"<cr>
+" map <Right> :echo "NOPE! Use l"<cr>
+" map <Up> :echo "NOPE! Use k"<cr>
+" map <Down> :echo "NOPE! Use j"<cr>
 " open files in directory of current file
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
 map <leader>e :edit %%
@@ -372,3 +372,4 @@ command! CtrlPLine call ctrlp#init(ctrlp#line#id())
 "--------------------
  map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 
+au BufNewFile,BufRead *.prawn set filetype=ruby

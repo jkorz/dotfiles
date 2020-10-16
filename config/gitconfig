@@ -25,6 +25,7 @@
     fa = fetch --all
     b = branch
     unadd = reset HEAD
+    fucked = reset --hard
     merged = branch --merged
     snapshot = !git stash save "snapshot: $(date)" && git stash apply "stash@{0}"
     s = !git fetch && git status
@@ -37,6 +38,7 @@
 [core]
     editor = vim
     pager = diff-so-fancy | less --tabs=4 -RFX
+    excludesfile = ~/.gitignore
 [include]
     path = .gitconfig-local
 [rerere]
