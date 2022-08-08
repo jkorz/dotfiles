@@ -3,7 +3,7 @@
 
 [alias]
     div = divergence
-    l = !pretty_git_log
+    l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
     r = !git l -30
     st = status
     ci = commit
@@ -53,3 +53,5 @@
 	conflictstyle = diff3
 [mergetool]
 	prompt = false
+[init]
+	defaultBranch = main

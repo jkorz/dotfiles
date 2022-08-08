@@ -26,11 +26,13 @@ Plugin 'tpope/vim-repeat'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'vim-scripts/taglist.vim'
 " Plugin 'jeetsukumaran/vim-buffergator'
-Plugin 'kchmck/vim-coffee-script'
+Plugin 'leafgarland/typescript-vim'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'tmhedberg/matchit'
 Plugin 'ecomba/vim-ruby-refactoring'
 Plugin 'tpope/vim-eunuch'
+Plugin 'M4R7iNP/vim-inky'
+Plugin 'jparise/vim-graphql'
 " colorschemes
 Plugin 'chriskempson/base16-vim'
 Plugin 'chriskempson/vim-tomorrow-theme'
@@ -42,6 +44,7 @@ call vundle#end()
 filetype plugin indent on
 
 set wildignore=*.swp,*.bak,*.pyc,*.class,*.jar,*.gif,*.png,*.jpg
+set re=2
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " BASIC EDITING CONFIGURATION
@@ -51,9 +54,9 @@ set hidden
 " remember more commands and search history
 set history=10000
 set expandtab
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
 set autoindent
 set laststatus=2
 set showmatch
