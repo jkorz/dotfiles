@@ -2,56 +2,57 @@
 # Please use .gitconfig-local for system specific settings
 
 [alias]
-    div = divergence
-    l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-    r = !git l -30
-    st = status
-    ci = commit
-    co = checkout
-    di = diff
-    dc = diff --cached
-    dm = diff master
-    amend = commit --amend
-    aa = add --all
-    head = !git l -1
-    h = !git head
-    hp = "!show_git_head"
-    ra = !git r --all
-    ff = merge --ff-only
-    pullff = pull --ff-only
-    noff = merge --no-ff
-    gn = goodness
-    gnc = goodness --cached
-    fa = fetch --all
-    b = branch
-    unadd = reset HEAD
-    fucked = reset --hard
-    merged = branch --merged
-    snapshot = !git stash save "snapshot: $(date)" && git stash apply "stash@{0}"
-    s = !git fetch && git status
-    ss = local-to-remote-status
-    la = !git l --all
+  div = divergence
+  l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+  r = !git l -30
+  st = status
+  ci = commit
+  co = checkout
+  di = diff
+  dc = diff --cached
+  dm = diff master
+  amend = commit --amend
+  aa = add --all
+  head = !git l -1
+  h = !git head
+  hp = "!show_git_head"
+  ra = !git r --all
+  ff = merge --ff-only
+  pullff = pull --ff-only
+  noff = merge --no-ff
+  gn = goodness
+  gnc = goodness --cached
+  fa = fetch --all
+  b = branch
+  unadd = reset HEAD
+  fucked = reset --hard
+  merged = branch --merged
+  snapshot = !git stash save "snapshot: $(date)" && git stash apply "stash@{0}"
+  s = !git fetch && git status
+  ss = local-to-remote-status
+  la = !git l --all
 [pull]
-    rebase = true
+  rebase = true
 [push]
-    default = simple
+  default = simple
+  autoSetupRemote = true
 [core]
-    editor = vim
-    pager = diff-so-fancy | less --tabs=4 -RFX
-    excludesfile = ~/.gitignore
+  editor = vim
+  pager = diff-so-fancy | less --tabs=4 -RFX
+  excludesfile = ~/.gitignore
 [include]
-    path = .gitconfig-local
+  path = .gitconfig-local
 [rerere]
-	enabled = true
+  enabled = true
 [color "diff-highlight"]
-	oldNormal = red bold
-	oldHighlight = red bold 52
-	newNormal = green bold
-	newHighlight = green bold 22
+  oldNormal = red bold
+  oldHighlight = red bold 52
+  newNormal = green bold
+  newHighlight = green bold 22
 [merge]
-	tool = vimdiff
-	conflictstyle = diff3
+  tool = vimdiff
+  conflictstyle = diff3
 [mergetool]
-	prompt = false
+  prompt = false
 [init]
-	defaultBranch = main
+  defaultBranch = main
