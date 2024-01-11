@@ -14,7 +14,7 @@ then
     echo "remote branch $branch found"
     git co $branch
 else
-    branch=`git b | grep $1 | cut -d '/' -f 3 | tr -d ' *'`
+    branch=`git b | grep $1 | tr -d ' '`
     echo "local branch $branch found"
     git co $branch
 fi

@@ -39,6 +39,7 @@ Plugin 'chriskempson/vim-tomorrow-theme'
 Plugin 'zenorocha/dracula-theme'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'habamax/vim-asciidoctor'
+Plugin 'github/copilot.vim'
 call vundle#end()
 
 filetype plugin indent on

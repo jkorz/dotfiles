@@ -12,6 +12,6 @@ send-keys -t work:3 'cd $PROJECT_DIR && clear' C-m
 send-keys -t work:3 'rails c' C-m
 new-window -t work
 send-keys -t work:4 'cd $PROJECT_DIR && clear' C-m
-send-keys -t work:4 'bin/dev' C-m
+send-keys -t work:4 'rails s' C-m
 select-window -t work:0
 
