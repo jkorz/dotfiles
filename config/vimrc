@@ -40,6 +40,14 @@ Plugin 'zenorocha/dracula-theme'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'habamax/vim-asciidoctor'
 Plugin 'github/copilot.vim'
+Plugin 'nvim-treesitter/nvim-treesitter'
+Plugin 'williamboman/mason.nvim'
+Plugin 'williamboman/mason-lspconfig.nvim'
+Plugin 'neovim/nvim-lspconfig'
+Plugin 'prettier/vim-prettier'
+Plugin 'yuezk/vim-js'
+Plugin 'maxmellon/vim-jsx-pretty'
+
 call vundle#end()
 
 filetype plugin indent on
