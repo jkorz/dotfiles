@@ -1,7 +1,7 @@
 source-file ~/.tmux.conf
 new-session -s work -n '' -d
 send-keys -t work:0 'cd $PROJECT_DIR' C-m
-send-keys -t work:0 'vim' C-m
+send-keys -t work:0 'nvim' C-m
 new-window -t work
 send-keys -t work:1 'cd $PROJECT_DIR && clear' c-m
 new-window -t work
@@ -12,6 +12,6 @@ send-keys -t work:3 'cd $PROJECT_DIR && clear' C-m
 send-keys -t work:3 'rails c' C-m
 new-window -t work
 send-keys -t work:4 'cd $PROJECT_DIR && clear' C-m
-send-keys -t work:4 'rails s' C-m
+send-keys -t work:4 'bin/dev -t 10' C-m
 select-window -t work:0
 
