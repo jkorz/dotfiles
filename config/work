@@ -1,6 +1,7 @@
 source-file ~/.tmux.conf
 new-session -s work -n '' -d
 send-keys -t work:0 'cd $PROJECT_DIR' C-m
+send-keys -t work:0 'nvm use lts/iron' C-m
 send-keys -t work:0 'nvim' C-m
 new-window -t work
 send-keys -t work:1 'cd $PROJECT_DIR && clear' c-m

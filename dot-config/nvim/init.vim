@@ -10,6 +10,7 @@ set pastetoggle=<leader>v
 set colorcolumn=81
 set showmode
 set number
+set showtabline=2
 let g:airline_powerline_fonts = 1
 
 colorscheme codeschool

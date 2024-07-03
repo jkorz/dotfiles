@@ -52,4 +52,9 @@ require('tsc').setup {
     -- enable_formatting = true,
 }
 require'navigator'.setup()
+require("mason").setup()
+require("mason-lspconfig").setup {
+    ensure_installed = { "rubocop" },
+}
+
 return
