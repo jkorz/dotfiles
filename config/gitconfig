@@ -1,6 +1,8 @@
 # Changes in this file may be overwritten
 # Please use .gitconfig-local for system specific settings
 
+[diff "rails_credentials"]
+	textconv = bin/rails credentials:diff
 [alias]
   div = divergence
   l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
@@ -56,3 +58,11 @@
   prompt = false
 [init]
   defaultBranch = main
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[user]
+	name = Joe Korzeniewski
+	email = 665255+jkorz@users.noreply.github.com

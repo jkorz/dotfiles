@@ -1,3 +1,7 @@
 #!/bin/bash
 
-tmux -f ~/.work att
+export PROJECT_DIR=$HOME/my/workdirectory
+
+cd $PROJECT_DIR
+
+tmux -f ~/.work -L yns att
