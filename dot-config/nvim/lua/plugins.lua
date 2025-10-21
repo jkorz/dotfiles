@@ -4,10 +4,18 @@ require('packer').startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
 
-  use('dmmulroy/tsc.nvim')
+  use 'dmmulroy/tsc.nvim'
   use 'williamboman/mason.nvim'
   use 'williamboman/mason-lspconfig.nvim'
-  use 'neovim/nvim-lspconfig'
+  use { 'neovim/nvim-lspconfig',
+    init_options = {
+      addonSettings = {
+        ["Ruby LSP Rails"] = {
+          enablePendingMigrationsPrompt = false
+        }
+      }
+    }
+  }
   use 'nvim-treesitter/nvim-treesitter'
   use 'flazz/vim-colorschemes'
   use 'bling/vim-airline'
@@ -21,23 +29,24 @@ require('packer').startup(function(use)
   use 'tpope/vim-unimpaired'
   use 'tpope/vim-repeat'
   use 'tpope/vim-eunuch'
-  use 'github/copilot.vim'
+  use { 'github/copilot.vim', branch = 'release' }
   use 'prettier/vim-prettier'
   use 'yuezk/vim-js'
   use 'maxmellon/vim-jsx-pretty'
-  use { 'CopilotC-Nvim/CopilotChat.nvim', branch = 'canary' }
   use {
-    'nvim-telescope/telescope.nvim', tag = '0.1.6',
-    -- or                            , branch = '0.1.x',
+    'CopilotC-Nvim/CopilotChat.nvim',
+    requires = {
+      { 'nvim-lua/plenary.nvim' },
+      { 'nvim-telescope/telescope.nvim' },
+      { 'github/copilot.vim' }
+    },
+    branch = 'main'
+  }
+  use {
+    'nvim-telescope/telescope.nvim',
     requires = { {'nvim-lua/plenary.nvim'} }
   }
   use 'nvim-tree/nvim-web-devicons'
-  use {
-    "nvim-telescope/telescope-frecency.nvim",
-    config = function()
-      require("telescope").load_extension "frecency"
-    end,
-  }
   use {
     'ray-x/navigator.lua',
     requires = {
@@ -58,7 +67,7 @@ require('tsc').setup {
   -- enable_formatting = true,
 }
 require'navigator'.setup()
--- require("CopilotChat").setup()
+require("CopilotChat").setup()
 require("mason").setup()
 require("mason-lspconfig").setup {
   ensure_installed = { "rubocop", "ruby_lsp" },
@@ -66,6 +75,6 @@ require("mason-lspconfig").setup {
     client.resolved_capabilities.document_formatting = true
   end,
 }
--- require('multicursors').start()
+require('multicursors').start()
 
 return

@@ -9,6 +9,8 @@
   r = !git l -30
   st = status
   ci = commit
+  cia = commit --amend
+  ciad = commit --amend --date="$(date -R)"
   co = checkout
   di = diff
   dc = diff --cached
@@ -33,8 +35,6 @@
   s = !git fetch && git status
   ss = local-to-remote-status
   la = !git l --all
-[pull]
-  rebase = true
 [push]
   default = simple
   autoSetupRemote = true

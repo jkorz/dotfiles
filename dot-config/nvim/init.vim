@@ -6,7 +6,7 @@ set shiftwidth=2
 set expandtab
 set smartindent
 let mapleader=","
-set pastetoggle=<leader>v
+" set pastetoggle=<leader>v
 set colorcolumn=81
 set showmode
 set number
@@ -61,6 +61,9 @@ autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
 autocmd BufRead,BufNewFile *.erb set filetype=eruby.html
+autocmd BufRead,BufNewFile *.axlsx set filetype=ruby
+autocmd BufRead,BufNewFile *.jbuilder set filetype=ruby
+autocmd BufRead,BufNewFile *.caracal set filetype=ruby
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " SWITCH BETWEEN TEST AND PRODUCTION CODE
