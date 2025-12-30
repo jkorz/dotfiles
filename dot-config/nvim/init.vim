@@ -25,6 +25,7 @@ nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 nnoremap <leader>fs <cmd>Telescope search_history<cr>
 nnoremap <leader>af <cmd>lua vim.lsp.buf.format()<cr>
 nnoremap <leader>. :call OpenTestAlternate()<cr>
+nnoremap <silent> <leader>d :lua vim.diagnostic.open_float()<CR>
 inoremap <c-/> <Plug>(copilot-suggest)
 nnoremap <leader>m <cmd>MCstart<cr>
 vnoremap <leader>m <cmd>MCstart<cr>
@@ -95,8 +96,8 @@ function! AlternateForCurrentFile()
 endfunction
 
 lua require('plugins')
-lua require('lspconfig').ruby_lsp.setup{}
+" lua require('lspconfig').ruby_lsp.setup{}
 
 "lua vim.g.autoformat=false
-lua vim.cmd [[autocmd! BufWritePre *]]
+" lua vim.cmd [[autocmd! BufWritePre *]]
 "autocmd FileType *.rb,*.erb setlocal formatoptions-=cro
