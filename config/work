@@ -1,7 +1,7 @@
 source-file ~/.tmux.conf
 new-session -s work -n '' -d
 send-keys -t work:0 'cd $PROJECT_DIR' C-m
-send-keys -t work:0 'nvm use lts/jod' C-m
+send-keys -t work:0 'nvm use lts/krypton' C-m
 send-keys -t work:0 'nvim' C-m
 new-window -t work
 send-keys -t work:1 'cd $PROJECT_DIR && clear' c-m
@@ -10,9 +10,9 @@ send-keys -t work:2 'cd $PROJECT_DIR && clear' C-m
 send-keys -t work:2 'bundle exec guard' C-m
 new-window -t work
 send-keys -t work:3 'cd $PROJECT_DIR && clear' C-m
-send-keys -t work:3 'rails c' C-m
+send-keys -t work:3 'bundle exec rails c' C-m
 new-window -t work
 send-keys -t work:4 'cd $PROJECT_DIR && clear' C-m
-send-keys -t work:4 'bin/dev -t 10' C-m
+send-keys -t work:4 'bin/dev' C-m
 select-window -t work:0
 

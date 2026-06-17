@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export PROJECT_DIR=$HOME/my/workdirectory
+export PROJECT_DIR=$HOME/repos/yournextstep
 
 cd $PROJECT_DIR
 
